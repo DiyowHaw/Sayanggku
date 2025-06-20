@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayanggkuu</title>
+    <style>
+        /* Gaya Umum */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: #f3719d;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #c2185b;
+        }
+
+        /* Halaman */
+        .page {
+            display: none;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px 0;
+            animation: fadeIn 0.5s;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1,
+        h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        /* Elemen Khusus */
+        .heart {
+            color: #e91e63;
+            font-size: 30px;
+            animation: beat 1s infinite alternate;
+            display: inline-block;
+        }
+
+        @keyframes beat {
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        button,
+        .btn {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        button:hover,
+        .btn:hover {
+            background-color: #c2185b;
+            transform: scale(1.05);
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #fce4ec;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e91e63;
+            font-size: 80px;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Galeri */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 200px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: 5% auto;
+        }
+
+        .lightbox-img {
+            max-height: 80vh;
+            max-width: 90vw;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .countdown-item {
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigasi -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">Beranda</a></li>
+            <li><a href="#" onclick="showPage('about')">Tentang Kita</a></li>
+            <li><a href="#" onclick="showPage('gallery')">Galeri Kenangan</a></li>
+            <li><a href="#" onclick="showPage('message')">Pesan Rahasia</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Halaman Home -->
+        <div id="home" class="page active-page">
+
+            <h1>Sinderbolong♡</h1>
+
+            <div class="photo-placeholder">
+
+                <span><video width="640" height="360" controls>
+                <source src="vid/depan.mp4" type="video/mp4"></video>
+                </span>
+            </div>
+
+            <p align=center>Hai, Natasha Ivania Salsabila</p>
+            <p align=center> Semoga Kamu Suka Lihat Ini :)
+            </p>
+            <div class="heart"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="showPage('about')">Kenangan Kita</button>
+
+            </div>
+            <div class="music-player">
+                <audio id="ourSong">
+                    <source src="vid/lesung pipi.mp3" type="audio/mp3">
+                </audio>
+
+                <button onclick="playPause()" id="playBtn">▶ Putar Lagu nya</button>
+                <button onclick="stopMusic()">⏹ Berhenti</button><br>
+                <br> ↓↓ volume ↓↓
+                <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.7">
+            </div>
+
+            <style>
+                .music-player {
+                    background: #fce4ec;
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin: 20px 0;
+                    text-align: center;
+                }
+
+                .music-player button {
+                    background: #e91e63;
+                    color: white;
+                    border: none;
+                    padding: 10px 15px;
+                    margin: 0 5px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                }
+            </style>
+
+            <script>
+                const audio = document.getElementById("ourSong");
+                const playBtn = document.getElementById("playBtn");
+                const volumeControl = document.getElementById("volumeControl");
+
+                function playPause() {
+                    if (audio.paused) {
+                        audio.play();
+                        playBtn.innerHTML = "⏸ Jeda";
+                    } else {
+                        audio.pause();
+                        playBtn.innerHTML = "▶ Lanjutkan";
+                    }
+                }
+
+                function stopMusic() {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    playBtn.innerHTML = "▶ Putar Lagu Kita";
+                }
+
+                volumeControl.addEventListener('input', function () {
+                    audio.volume = this.value;
+                });
+
+                // Otomatis atur volume awal
+                audio.volume = 0.7;
+            </script>
+            <audio id="romanticMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        </div>
+
+        <!-- Halaman Tentang Kita -->
+        <div id="about" class="page">
+            <h2>Ucapanku "Superman"</h2>
+            <div class="photo-placeholder">
+                <span>📖</span>
+            </div>
+
+
+            <p>kpd cintaku, vania
+yg terhormat mama nya sekaligus keluarga vania dan presiden jokowi</p>
+
+<p>hai cintaa
+aku ingin mengucapkan selamat untukmu
+selamat karna uda bertahan sejauh ini
+aku harap km bahagia terus ya
+mau tau ga, hadir km di dunia adalah kebahagiaan, adalah cinta, adalah hadiah
+wish u all the best dan seterusnya</p>
+
+<p>almost 4 years dan insyaallah kamu tetap abadi dalam cinta yg akan slalu aku perjuangkan. makasih ya sayang, kamu yg membuka hatiku untuk terus belajar mencintai lebih luas lagi</p>
+
+<p>semangat untuk segala hal yg km lakuin ya, selama ada aku, kamu akan slalu punya orang yg bangga sama semua pencapaian kamu. aku selalu jadi fans kamu yang nomor #1 #2 #3 
+km engga perlu merasa khawatir dan takut tentang perjalanan kamu sekarang. karena di ujung jalan akan ada aku yang selalu bangga dan bilang "you did well sayangg"</p> 
+
+<p>aku selalu mendoakan kamu sebaik baiknya. kasih perhatian perhatian kecil yang aku harap bisa mengobati hati kamu di hari buruk kamu. karena aku gabisa di samping km 24/7 dan aku gatau semua hal tentang kamu. 
+kalau di tengah jalan nanti kamu merasa berat, cari aku yaa... berbagi sedikit bebannya ke aku supaya km bisa melangkah lebih ringan</p>
+
+<p>semoga doa doa dan impianmu terwujud
+dari aku yg slalu ingin melihat km bahagia</p>
+
+<p>akuu sayangg kamuu, akuu selalu sayangg kamuu
+selamat ulang tahun ya my beloved vaniaaaa
+i loveee youuu sooo💊🫀💗</p>
+
+
+            <h3>Terimalah perasaan ku dengan tulus, <font color="#c2185b">AKU SUKA KAMU</font>
+            </h3>
+
+
+            </p>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="years">21</div>
+                    <div class="countdown-label">Tanggal</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="months">Juni</div>
+                    <div class="countdown-label">Bulan</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">2006</div>
+                    <div class="countdown-label">Tahun</div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button onclick="showPage('gallery')">Lihat Galeri Kita</button>
+                <button onclick="showPage('home')">Kembali ke Home</button>
+            </div>
+        </div>
+
+        <!-- Halaman Galeri -->
+        <div id="gallery" class="page">
+            <h2>Galeri Foto Kamu^^</h2>
+            <p>Boleh kok kalau mau nambah fotonya ^^</p>
+
+            <!DOCTYPE html>
+            <html lang="id">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Gallery Cinta Kita</title>
+                <style>
+                    /* Gaya Lightbox */
+                    .lightbox {
+                        display: none;
+                        position: fixed;
+                        z-index: 1000;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.9);
+                        text-align: center;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    .lightbox.show {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        opacity: 1;
+                    }
+
+                    .lightbox-content {
+                        position: relative;
+                        max-width: 90%;
+                        max-height: 90%;
+                        animation: zoomIn 0.3s ease;
+                    }
+
+                    @keyframes zoomIn {
+                        from {
+                            transform: scale(0.8);
+                        }
+
+                        to {
+                            transform: scale(1);
+                        }
+                    }
+
+                    .lightbox-img {
+                        max-height: 80vh;
+                        max-width: 90vw;
+                        border-radius: 5px;
+                        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+                        border: 3px solid #e91e63;
+                    }
+
+                    .close-lightbox {
+                        position: absolute;
+                        top: -40px;
+                        right: -40px;
+                        color: white;
+                        font-size: 40px;
+                        cursor: pointer;
+                        transition: transform 0.2s;
+                    }
+
+                    .close-lightbox:hover {
+                        transform: rotate(90deg);
+                        color: #e91e63;
+                    }
+
+                    .lightbox-caption {
+                        color: white;
+                        margin-top: 15px;
+                        font-size: 18px;
+                        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                    }
+
+                    /* Gaya Galeri */
+                    .gallery {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                        gap: 15px;
+                        padding: 20px;
+                    }
+
+                    .gallery-item {
+                        border-radius: 10px;
+                        overflow: hidden;
+                        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+                        transition: all 0.3s ease;
+                        height: 200px;
+                        cursor: pointer;
+                    }
+
+                    .gallery-item:hover {
+                        transform: scale(1.03);
+                        box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+                    }
+
+                    .gallery-item img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.5s ease;
+                    }
+
+                    .gallery-item:hover img {
+                        transform: scale(1.1);
+                    }
+
+                    /* Tombol Navigasi */
+                    .lightbox-nav {
+                        position: absolute;
+                        top: 50%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        transform: translateY(-50%);
+                    }
+
+                    .lightbox-nav button {
+                        background: rgba(233, 30, 99, 0.7);
+                        color: white;
+                        border: none;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        font-size: 24px;
+                        cursor: pointer;
+                        margin: 0 20px;
+                        transition: all 0.3s;
+                    }
+
+                    .lightbox-nav button:hover {
+                        background: #e91e63;
+                        transform: scale(1.1);
+                    }
+                </style>
+            </head>
+
+            <body>
+                <div class="gallery">
+                    <!-- Contoh gambar - ganti dengan foto Anda -->
+                    <div class="gallery-item" data-caption="Calon Istrikuu">
+                        <img src="img/25.jpg">   
+                    </div>
+                    <div class="gallery-item" data-caption="Pacalkuu">
+                        <img src="img/2.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="Perempuankuu">
+                        <img src="img/3.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="Cantikkuu">
+                        <img src="img/18.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/5.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/6.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/7.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/11.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="Lagi Meledek Aku">
+                        <img src="img/9.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/10.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/8.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/12.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/13.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/14.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/15.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/16.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/17.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/4.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/19.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/20.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/21.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/22.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/23.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/24.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/1.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/26.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/27.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/28.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/29.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/30.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/31.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/32.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/33.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/34.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/35.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/36.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/37.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/49.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/38.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/40.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/41.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/42.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/43.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/44.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/45.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/46.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/47.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                        <img src="img/48.jpg">
+                    </div>
+                    
+                </div>
+
+                <h2 align="center">Galeri Slipkol^^</h2>
+                <div class="gallery">
+                    <!-- Contoh gambar - ganti dengan foto Anda -->
+                    <div class="gallery-item" data-caption="agi selimutan">
+                    <img src="img/slipkol.jpg"> 
+                    </div>
+                    <div class="gallery-item" data-caption="agi nunggu dosen">
+                    <img src="img/slipkol2.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="agi mayahan">
+                    <img src="img/slipkol3.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="agi nugas (cantik banget)">
+                    <img src="img/slipkol4.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="agi kecapean">
+                    <img src="img/slipkol5.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="abis nemenin aku di kos sendirian">
+                    <img src="img/slipkol6.jpg">
+                    </div>
+                </div>
+
+                <h2 align="center">Galeri Fotokuu^^</h2>
+                <div class="gallery">
+                    <!-- Contoh gambar - ganti dengan foto Anda -->
+                    <div class="gallery-item" data-caption="Momen Spil Karya sm Temen'">
+                    <img src="img/ft.jpg"> 
+                    </div>
+                    <div class="gallery-item" data-caption="Hasil Karyaku sm Mba WKWKWK">
+                    <img src="img/ft2.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                    <img src="img/ft4.jpg">
+                    </div>
+                    <div class="gallery-item" data-caption="">
+                    <img src="img/ft1.jpg">
+                    </div>
+                </div>
+
+                <h2 align="center">Galeri Vlog Pacalkuu^^</h2>
+                <div class="gallery">
+                <video width="240" height="360" controls>
+                <source src="vid/vlog.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog1.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog2.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog3.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog4.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog5.mp4" type="video/mp4">
+                </video>
+                <video width="240" height="360" controls>
+                <source src="vid/vlog6.mp4" type="video/mp4">
+                </video>
+                </div>
+                <!-- Lightbox Popup -->
+                <div id="lightbox" class="lightbox">
+                    <span class="close-lightbox">&times;</span>
+                    <div class="lightbox-nav">
+                        <button id="prev-btn">❮</button>
+                        <button id="next-btn">❯</button>
+                    </div>
+                    <div class="lightbox-content">
+                        <img id="lightbox-img" class="lightbox-img" src="" alt="">
+                        <p id="lightbox-caption" class="lightbox-caption"></p>
+                    </div>
+                </div>
+
+                <script>
+                    // Inisialisasi variabel
+                    const lightbox = document.getElementById('lightbox');
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    const lightboxCaption = document.getElementById('lightbox-caption');
+                    const closeBtn = document.querySelector('.close-lightbox');
+                    const prevBtn = document.getElementById('prev-btn');
+                    const nextBtn = document.getElementById('next-btn');
+                    const galleryItems = document.querySelectorAll('.gallery-item');
+
+                    let currentImageIndex = 0;
+                    const images = Array.from(galleryItems);
+
+                    // Buka lightbox saat gambar diklik
+                    galleryItems.forEach((item, index) => {
+                        item.addEventListener('click', () => {
+                            currentImageIndex = index;
+                            updateLightbox();
+                            lightbox.classList.add('show');
+                            document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        });
+                    });
+
+                    // Update lightbox dengan gambar yang dipilih
+                    function updateLightbox() {
+                        const imgSrc = images[currentImageIndex].querySelector('img').src;
+                        const imgCaption = images[currentImageIndex].dataset.caption || '';
+
+                        lightboxImg.src = imgSrc;
+                        lightboxCaption.textContent = imgCaption;
+                    }
+
+                    // Navigasi gambar
+                    function showNextImage() {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        updateLightbox();
+                    }
+
+                    function showPrevImage() {
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        updateLightbox();
+                    }
+
+                    // Event listeners
+                    closeBtn.addEventListener('click', () => {
+                        lightbox.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    });
+
+                    nextBtn.addEventListener('click', showNextImage);
+                    prevBtn.addEventListener('click', showPrevImage);
+
+                    // Tutup saat klik di luar gambar
+                    lightbox.addEventListener('click', (e) => {
+                        if (e.target === lightbox) {
+                            lightbox.classList.remove('show');
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+
+                    // Navigasi dengan keyboard
+                    document.addEventListener('keydown', (e) => {
+                        if (!lightbox.classList.contains('show')) return;
+
+                        if (e.key === 'Escape') {
+                            lightbox.classList.remove('show');
+                            document.body.style.overflow = 'auto';
+                        } else if (e.key === 'ArrowRight') {
+                            showNextImage();
+                        } else if (e.key === 'ArrowLeft') {
+                            showPrevImage();
+                        }
+                    });
+                </script>
+            </body>
+
+            </html>
+        </div>
+
+    <!-- Halaman Pesan Rahasia -->
+    <div id="message" class="page">
+        <h2>Pesan Untukmu</h2>
+
+        <div class="photo-placeholder">
+            <span>✉️</span>
+        </div>
+ 
+        <div id="love-letter">
+            <p>sayanggkuu</p>
+            <p>jadi gimana menurutmu website ini? mungkin kamu ada pesan yang mau kamu sampaikan ke aku,
+                silahkan kirim pesan mu di bawah ini yaa.</p>
+
+        </div>
+
+        <h3 style="margin-top: 30px;">Kirim Pesan Balasan</h3>
+        <form id="reply-form">
+            <div class="form-group">
+                <label for="message-text">Pesanmu:</label>
+                <textarea id="message-text" required></textarea>
+            </div>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+
+            <button onclick="showPage('gallery')">Kembali ke Galeri</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Fungsi untuk menampilkan halaman tertentu
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active-page');
+
+            // Jika halaman about, hitung waktu bersama
+            if (pageId === 'about') {
+                calculateTimeTogether();
+            }
+
+            // Scroll ke atas
+            window.scrollTo(0, 0);
+        }
+
+        // Fungsi untuk memutar musik
+        function playMusic() {
+            var audio = document.getElementById('romanticMusic');
+            audio.play();
+        }
+
+        // Fungsi untuk menghitung waktu bersama
+        function calculateTimeTogether() {
+            // Ganti dengan tanggal pertama kali bertemu/kencan
+            const startDate = new Date('2025-03-11');
+            const currentDate = new Date();
+
+            const diffTime = Math.abs(currentDate - startDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            // Hitung tahun, bulan, hari
+            const years = Math.floor(diffDays / 365);
+            const months = Math.floor((diffDays % 365) / 30);
+            const days = diffDays % 30;
+
+            document.getElementById('daysTogether').textContent = diffDays;
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+        }
+
+        // Fungsi untuk menangani form balasan
+        document.getElementById('reply-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = document.getElementById('message-text').value;
+            alert('Terima kasih atas pesanmu! Aku akan selalu menyimpannya di hatiku.\n\nPesanmu: ' + message);
+            document.getElementById('message-text').value = '';
+        });
+
+        // Fungsi untuk jawaban masa depan
+        function showAnswer(answer) {
+            const answerDiv = document.getElementById('future-answer');
+            const answerText = document.getElementById('answer-text');
+            const noBtn = document.getElementById('no-btn');
+
+            if (answer === 'yes') {
+                answerText.innerHTML = 'Aku sangat bahagia! <span class="heart">❤️</span> Mari kita bangun masa depan indah bersama!';
+                noBtn.style.display = 'none';
+            } else {
+                // Buat tombol "Tidak" bergerak ketika dihover
+                noBtn.style.position = 'relative';
+                noBtn.style.left = (Math.random() * 100 - 50) + 'px';
+                noBtn.style.top = (Math.random() * 50 - 25) + 'px';
+
+                answerText.textContent = 'Coba pikir lagi... Aku tahu kamu sebenarnya mau mengatakan YA!';
+                answerText.style.color = '#e91e63';
+            }
+
+            answerDiv.style.display = 'block';
+        }
+
+        // Hitung waktu bersama saat pertama kali load
+        window.onload = function () {
+            calculateTimeTogether();
+        };
+    </script>
+</body>
+
+</html>
